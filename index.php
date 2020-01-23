@@ -4,26 +4,21 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
- function getTelegramUserData() {
-    if (isset($_COOKIE['tg_user'])) {
-        $auth_data_json = urldecode($_COOKIE['tg_user']);
-        $auth_data = json_decode($auth_data_json, true);
-        return $auth_data;
-    }
-    return false;
-}
+require_once('Auth.php');
+$auth = new Auth;
+$is_authed = $auth->getTelegramUserData();
 
-if ($_GET['logout']) {
+
+if (isset($_GET['logout'])) {
   setcookie('tg_user', '');
   header('Location: index.php');
 }
 
-$tg_user = getTelegramUserData();
 
-if ($tg_user !== false) {
+if ($is_authed !== false) {
 
-    var_dump($tg_user);
-
+    var_dump($is_authed);
+    echo "<a href='?logout=1'>Logout</a>";
 } else { ?>
 
 <!DOCTYPE html>
