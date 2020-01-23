@@ -1,5 +1,9 @@
 <?php
 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 require_once('TelegramClass.php');
 $telegram = new Telegram();
 
@@ -45,9 +49,9 @@ if ($tg_user !== false) {
 } else {
 
   $html = <<<HTML
-    <h1>Hello, anonymous!</h1>
-    <script async src="https://telegram.org/js/telegram-widget.js?2" data-telegram-login="codex_az_bot" data-size="large" data-auth-url="index.php"></script>
-    HTML;
+<h1>Hello, anonymous!</h1>
+<script async src="https://telegram.org/js/telegram-widget.js?2" data-telegram-login="codex_az_bot" data-size="large" data-auth-url="index.php"></script>
+HTML;
 }
 
 
