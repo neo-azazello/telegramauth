@@ -9,15 +9,18 @@ $telegram = new Telegram();
 
 try {
 
-  $data = $telegram->checkTelegramAuthorization($_GET);
-  $telegram->saveTelegramUserData($data);
+    $tg_user = $telegram->getTelegramUserData();
+    if($tg_user == false) {
+        $data = $telegram->checkTelegramAuthorization($_GET);
+        $telegram->saveTelegramUserData($data);
+    }
 
 } catch (Exception $e) {
 
   die ($e->getMessage());
 }
 
-$tg_user = $telegram->getTelegramUserData();
+
 
 
 //////////////////////////////
