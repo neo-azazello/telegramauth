@@ -5,11 +5,12 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 require_once('TelegramClass.php');
-$telegram = new Telegram();
+$telegram = new Telegram;
 
 try {
 
     $tg_user = $telegram->getTelegramUserData();
+
     if($tg_user == false) {
         $data = $telegram->checkTelegramAuthorization($_GET);
         $telegram->saveTelegramUserData($data);
@@ -19,8 +20,6 @@ try {
 
   die ($e->getMessage());
 }
-
-
 
 
 //////////////////////////////
