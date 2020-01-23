@@ -8,3 +8,5 @@ try {
     $telegram->saveTelegramUserData($data);
     } catch (Exception $e) {
 }
+
+header('Location: index.php');

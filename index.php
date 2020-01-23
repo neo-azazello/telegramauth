@@ -18,11 +18,11 @@ if ($_GET['logout']) {
   header('Location: index.php');
 }
 
-$tg_user =getTelegramUserData();
+$tg_user = getTelegramUserData();
 
 if ($tg_user !== false) {
 
-    print_r($tg_user);
+    var_dump($tg_user);
 
 } else { ?>
 
